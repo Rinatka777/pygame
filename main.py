@@ -6,6 +6,9 @@ def main():
     # Initialize Pygame
     pygame.init()
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     # Print statements
     print("Starting asteroids!")
     print("Screen width: {}".format(SCREEN_WIDTH))
@@ -22,6 +25,7 @@ def main():
 
     # Set the dt (delta time) variable to 0
     dt = 0
+   
     # Game loop
     while True:
         # Handle events
@@ -29,11 +33,11 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-
+        updatable.update(dt)
         # Fill the screen with black color
         screen.fill((0, 0, 0))
         # Draw the player on the screen
-        player.draw(screen)
+        drawable.draw(screen)
         # Update the display
         pygame.display.flip()
 

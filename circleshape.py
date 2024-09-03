@@ -1,8 +1,9 @@
 import pygame
-
+from pygame.sprite import Sprite
 # Base class for game objects
-class CircleShape(pygame.sprite.Sprite):
+class CircleShape(Sprite):
     def __init__(self, x, y, radius):
+        super().__init__()
         self.x = x
         self.y = y
         self.radius = radius
